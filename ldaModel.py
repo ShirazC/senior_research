@@ -1,11 +1,9 @@
 import sys, os
-from nltk import *
+from nltk.tokenize import RegexpTokenizer
 from stop_words import get_stop_words
 from nltk.stem.porter import PorterStemmer
 from gensim import corpora, models
 import gensim
-
-sys.path.append('/Users/shirazchokshi')
 
 tokenizer = RegexpTokenizer(r'\w+')
 
@@ -33,7 +31,7 @@ for i in doc_set:
 	
 	#clean and tokenize all the document strings
 	raw = i.lower()
-	tokens = tokenize.tokenize(raw)
+	tokens = tokenizer.tokenize(raw)
 	
 	# remove stop words from tokens
 	stopped_tokens = [i for i in tokens if not i in en_stop]
@@ -48,8 +46,8 @@ for i in doc_set:
 dictionary = corpora.Dictionary(texts)
 
 # convert tokenized documents into a document-term matrix
-corpus  = [dictionary.doc2bow(tex) for text in texts]  
+corpus  = [dictionary.doc2bow(text) for text in texts]  
 
 # generate the LDA model
 
-ldamodel = gensim.models.ldmodel.LdaModel(corpus, numtopics=2, id2word = dictionary, passes=20)
+ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=2, id2word = dictionary, passes=20)
