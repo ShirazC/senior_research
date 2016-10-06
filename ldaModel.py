@@ -50,6 +50,7 @@ corpus  = [dictionary.doc2bow(text) for text in texts]
 
 # generate the LDA model
 
+<<<<<<< HEAD
 ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=3, id2word = dictionary, passes=20)
 
 #test case
@@ -58,3 +59,10 @@ print(ldamodel.print_topics(num_topics=3, num_words=3))
 print("-------------------------------------------------------------------")
 
 print(ldamodel)
+=======
+ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=2, id2word = dictionary, passes=20)
+
+#print test cases
+
+print(ldamodel.print_topics(num_topics=3, num_words=3))
+>>>>>>> 4c8efd775e6fcf44c9d36343a44243c0727aa3ef
